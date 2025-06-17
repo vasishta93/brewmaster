@@ -61,8 +61,8 @@
 
     .banner {
       width: 100%;
-      height: 180px;
-      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      height: 300px;
+      background: url('img/banner.png') center/cover no-repeat;
       position: relative;
     }
 
@@ -129,8 +129,8 @@
     }
 
     .intro-button img {
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 80px;
       margin-bottom: 10px;
     }
 
@@ -266,7 +266,7 @@
 </head>
 <body>
   <div class="top-bar">
-    <a href="/"><img src="https://www.farmtocups.com/logo.svg" alt="FarmtoCups Logo"></a>
+    <a href="/"><img src="img/logo.png" alt="FarmtoCups Logo"></a>
     <nav>
       <a href="https://www.farmtocups.com">Main Website</a>
       <a href="https://www.farmtocups.com/shop">Shop</a>
@@ -278,16 +278,19 @@
   <header>
     <h1>☕ BrewMatch by FarmtoCups</h1>
     <p class="subtitle">Your Mood-Based Brew Guide</p>
+    <h1>Not sure what to brew? We’ve got you</h1>
     <p class="description">
-      Meet the BrewBot — your personal brew companion from FarmtoCups. Whether you're unsure which blend suits your current mood or need help making the perfect iced tea, BrewBot is here to guide you. You can either take a short quiz for personalized drink suggestions or chat directly with our AI Brew Master to explore our ingredients, brewing methods, and curated kits.
+    Not sure what to steep today? Whether you’re looking to unwind, recharge, or simply savour a new flavour, BrewMatch helps you discover the perfect cup.
+    Take a short quiz and we’ll recommend blends that suit your current mood — or chat with our Brew Master to explore ingredients, brewing tips, and kits curated just for you. Because the right brew isn’t just about taste — it’s about how it makes you feel.   
+   
     </p>
     <div class="intro-buttons">
       <button class="intro-button" onclick="startQuiz()">
-        <img src="https://img.icons8.com/fluency/48/tea.png" alt="Quiz" />
+        <img src="img/1.png" alt="Quiz" />
         Take the Brew Quiz
       </button>
       <button class="intro-button" onclick="startChat()">
-        <img src="https://img.icons8.com/fluency/48/chat.png" alt="Chat" />
+        <img src="img/2.png" alt="Chat" />
         Chat with Brew Master
       </button>
     </div>
@@ -331,7 +334,7 @@
       msg.classList.add('message', sender);
       const avatar = document.createElement('img');
       avatar.className = 'avatar';
-      avatar.src = sender === 'bot' ? 'https://img.icons8.com/emoji/48/hot-beverage.png' : 'https://img.icons8.com/emoji/48/person.png';
+      avatar.src = sender === 'bot' ? 'img/4.png' : 'img/6.png';
       const span = document.createElement('span');
       span.textContent = text;
       msg.appendChild(avatar);
@@ -401,7 +404,7 @@
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer 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"
+            "Authorization": "Bearer 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"
           },
           body: JSON.stringify({
             model: "gpt-4",
@@ -468,7 +471,7 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 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"
+          "Authorization": "Bearer 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"
         },
         body: JSON.stringify({
           model: "gpt-4",
@@ -493,7 +496,7 @@
       chatSection.style.display = 'flex';
       brewMasterInputSection.style.display = 'none';
       chatContainer.innerHTML = '';
-      addMessage("👋 Let's find your perfect drink with a quick quiz!");
+      addMessage("Let's find your perfect drink with a quick quiz!");
       currentStep = 0;
       userResponses.length = 0;
       nextQuestion();
@@ -503,7 +506,7 @@
       chatSection.style.display = 'flex';
       brewMasterInputSection.style.display = 'flex';
       chatContainer.innerHTML = '';
-      addMessage("👋 I'm the Brew Master. Ask me anything about your perfect brew.");
+      addMessage("I'm the Brew Master. Ask me anything about your perfect brew.");
     }
 
     function restart() {
