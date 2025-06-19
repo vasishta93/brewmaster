@@ -400,18 +400,13 @@
 
 		Do NOT suggest anything not sold by FarmtoCups. Keep the tone sensory, warm, and wise—like a trusted brew master inviting someone into the world of craft beverages.`;
       try {
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer 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"
-          },
-          body: JSON.stringify({
-            model: "gpt-4",
-            messages: [{ role: "user", content: prompt }],
-            temperature: 0.7
-          })
-        });
+        const res = await fetch("/.netlify/functions/getBrewResponse", {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json"
+		  },
+		  body: JSON.stringify({ prompt })
+		});
         const data = await res.json();
         chatContainer.lastChild.remove();
         data.choices[0].message.content.split('\n')
@@ -467,18 +462,13 @@
 
       User asks: ${question}`;
 
-      fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer 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"
-        },
-        body: JSON.stringify({
-          model: "gpt-4",
-          messages: [{ role: "user", content: refinedPrompt }],
-          temperature: 0.6
-        })
-      })
+      fetch("/.netlify/functions/getBrewResponse", {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json"
+		  },
+		  body: JSON.stringify({ prompt: refinedPrompt })
+		})
       .then(res => res.json())
       .then(data => {
         chatContainer.lastChild.remove();
